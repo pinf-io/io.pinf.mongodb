@@ -1,0 +1,37 @@
+{
+  "uid": "github.com/pinf-io/io.pinf.mongodb",
+  "name": "io.pinf.mongodb",
+  "version": "0.1.0",
+  "pm": "sm",
+  "engines": {
+    "node": "~0.10.15"
+  },
+  "mappings": {
+    "pinf-io-daemonize": "github.com/pinf-io/pinf-io-daemonize/~0.1.0",
+  	"mongodb": [
+      "archive",
+      "http://fastdl.mongodb.org/osx/mongodb-osx-x86_64-2.4.6.tgz",
+      {
+        "descriptor": {
+          "bin": {
+            "mongo": "./bin/mongo",
+          	"mongod": "./bin/mongod",
+            "mongostat": "./bin/mongostat"
+          }
+        }
+      }
+    ]
+  },
+  "devDependencies": {
+    "mocha": "~1.9.0"
+  },
+  "scripts": {
+    "start": "node io start",
+    "stop": "node io stop",
+    "test": "node_modules/.bin/mocha --reporter list test/*.js"
+  },
+  "on": {
+    "pinf/0/runtime/control/0#events/start": "$__DIRNAME/on.js",
+    "pinf/0/runtime/control/0#events/stop": "$__DIRNAME/on.js"
+  }
+}
